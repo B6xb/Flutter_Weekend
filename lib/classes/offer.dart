@@ -9,7 +9,7 @@ class Offer {
   double price;
   final Khawi khawi;
   String city;
-  List<Tourist>? tourists;
+  Tourist? tourist;
 
   Offer(
       {required this.title,
@@ -30,8 +30,7 @@ class Offer {
       khawi: data?['khawi'],
       city: data?['city'],
     );
-    offer.tourists =
-        data?['tourists'] is Iterable ? List.from(data?['tourists']) : null;
+    offer.tourist = data?['tourists'];
     return offer;
   }
 
@@ -42,7 +41,7 @@ class Offer {
       "price": price,
       "khawi": khawi,
       "city": city,
-      if (tourists != null) "tourists": tourists,
+      if (tourist != null) "tourist": tourist,
     };
   }
 }
