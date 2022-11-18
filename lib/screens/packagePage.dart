@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:khawi/classes/package.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/components/khawiBottomNaBar.dart';
 
 class packagePage extends StatelessWidget {
-  const packagePage({Key? key}) : super(key: key);
+  packagePage({Key? key}) : super(key: key);
+
+  List<Package> p = [
+    Package(title: "1st", numberOfDays: 3, numberOfReservations: 6, price: 100),
+    Package(
+        title: "2nd", numberOfDays: 7, numberOfReservations: 12, price: 200),
+    Package(
+        title: "3rd", numberOfDays: 15, numberOfReservations: 20, price: 400),
+    Package(
+        title: "4th", numberOfDays: 30, numberOfReservations: 40, price: 800),
+  ];
 
   Container packageBox(int days, double price, int numOfReservations) {
     return Container(
@@ -65,10 +76,9 @@ class packagePage extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            packageBox(3, 100, 6),
-            packageBox(7, 200, 12),
-            packageBox(15, 400, 20),
-            packageBox(30, 800, 40),
+            for (int i = 0; i < p.length; i++)
+              packageBox(
+                  p[i].numberOfDays, p[i].price, p[i].numberOfReservations),
           ],
         ),
       ),
