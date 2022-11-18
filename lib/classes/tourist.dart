@@ -1,98 +1,60 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package.dart';
 
 class Tourist {
-  String _name;
-  Image _picture;
-  String _bio;
-  final String _email;
-  String _password;
-  String _nationality;
-  String _gender;
-  String _birthDate;
-  double _rate;
-  final String _accountCreationTime;
-  Package _currentPackage;
+  // In constructor
+  String name;
+  final String email;
+  final String nationality;
+  final String gender;
+  String? birthDate;
+  final String accountCreationTime;
+  // Not in constructor
+  Package? currentPackage;
+  String? bio;
+  double? rate;
 
   Tourist(
-      String name,
-      Image picture,
-      String bio,
-      String email,
-      String password,
-      String accountCreationTime,
-      String nationality,
-      String birthDate,
-      String gender,
-      double rate,
-      Package currentPackage)
-      : _name = name,
-        _picture = picture,
-        _bio = bio,
-        _password = password,
-        _nationality = nationality,
-        _birthDate = birthDate,
-        _gender = gender,
-        _rate = rate,
-        _accountCreationTime = accountCreationTime,
-        _email = email,
-        _currentPackage = currentPackage;
+      {required this.name,
+      required this.email,
+      required this.accountCreationTime,
+      required this.nationality,
+      this.birthDate,
+      required this.gender});
 
-  String get name => _name;
-
-  set name(String value) {
-    _name = value;
+  factory Tourist.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    var tourist = Tourist(
+      name: data?['name'],
+      email: data?['email'],
+      accountCreationTime: data?['accountCreationTime'],
+      nationality: data?['nationality'],
+      birthDate: data?['birthDate'],
+      gender: data?['gender'],
+      // regions:
+      // data?['regions'] is Iterable ? List.from(data?['regions']) : null,
+    );
+    tourist.bio = data?['bio'];
+    tourist.currentPackage = data?['currentPackage'];
+    tourist.rate = data?['rate'];
+    return tourist;
   }
 
-  Image get picture => _picture;
-
-  set picture(Image value) {
-    _picture = value;
-  }
-
-  String get bio => _bio;
-
-  set bio(String value) {
-    _bio = value;
-  }
-
-  String get email => _email;
-
-  String get password => _password;
-
-  set password(String value) {
-    _password = value;
-  }
-
-  String get nationality => _nationality;
-
-  set nationality(String value) {
-    _nationality = value;
-  }
-
-  String get gender => _gender;
-
-  set gender(String value) {
-    _gender = value;
-  }
-
-  String get birthDate => _birthDate;
-
-  set birthDate(String value) {
-    _birthDate = value;
-  }
-
-  double get rate => _rate;
-
-  set rate(double value) {
-    _rate = value;
-  }
-
-  String get accountCreationTime => _accountCreationTime;
-
-  Package get currentPackage => _currentPackage;
-
-  set currentPackage(Package value) {
-    _currentPackage = value;
+  Map<String, dynamic> toFirestore() {
+    return {
+      "name": name,
+      "email": email,
+      "accountCreationTime": accountCreationTime,
+      "nationality": nationality,
+      if (birthDate != null) "birthDate": birthDate,
+      "gender": gender,
+      if (bio != null) "bio": bio,
+      if (currentPackage != null) "currentPackage": currentPackage,
+      if (rate != null) "rate": rate,
+    };
   }
 }
