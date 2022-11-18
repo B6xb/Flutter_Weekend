@@ -1,18 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:khawi/classes/khawi.dart';
+import 'package:khawi/classes/tourist.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/components/khawiBottomNaBar.dart';
+import '../classes/offer.dart';
 
 class OffersPage extends StatefulWidget {
-  const OffersPage({Key? key}) : super(key: key);
+  OffersPage({Key? key}) : super(key: key);
 
   @override
   State<OffersPage> createState() => _OffersPageState();
 }
 
 class _OffersPageState extends State<OffersPage> {
+  Khawi khawi = Khawi(
+      name: name,
+      phoneNumber: phoneNumber,
+      email: email,
+      accountCreationTime: accountCreationTime,
+      nationality: nationality,
+      gender: gender);
+  List<Offer> o = [
+    Offer(
+        title: "culture expert",
+        description: "I will go with you to...",
+        price: 50,
+        khawi: Khawi,
+        city: city)
+  ];
+
   @override
-  Container offerBox(String title, String description, double price,
-      String name, String city) {
+  Container offerBox(
+      String title, double price, String name, String city, String rate) {
     return Container(
       width: double.infinity,
       height: 200,
@@ -39,6 +58,16 @@ class _OffersPageState extends State<OffersPage> {
                   "$name",
                   style: TextStyle(fontSize: 15, color: Colors.blueGrey),
                 ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                    ),
+                    Text("$rate"),
+                  ],
+                ),
+                Text("$city"),
               ],
             ),
           ),
@@ -67,6 +96,9 @@ class _OffersPageState extends State<OffersPage> {
                 "Offers",
                 style: kMainTextStyle,
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
           ],
         ),
