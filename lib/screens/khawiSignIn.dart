@@ -15,7 +15,7 @@ class KhawiSignIn extends StatelessWidget {
             'Welcome',
             style: kMainTextStyle,
           ),
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           Padding(
