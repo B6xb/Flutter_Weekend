@@ -2,15 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:khawi/constants.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
-class KhawiBottomNavigationBar extends StatefulWidget {
-  const KhawiBottomNavigationBar({Key? key}) : super(key: key);
-
-  @override
-  KhawiBottomNavigationBarState createState() =>
-      KhawiBottomNavigationBarState();
-}
-
-class KhawiBottomNavigationBarState extends State<KhawiBottomNavigationBar> {
+class KhawiBottomNavigationBar extends StatelessWidget {
   ShapeBorder? bottomBarShape = const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(25)),
   );
@@ -45,7 +37,7 @@ class KhawiBottomNavigationBarState extends State<KhawiBottomNavigationBar> {
       showSelectedLabels: showSelectedLabels,
 
       currentIndex: _selectedItemPosition,
-      onTap: (index) => setState(() => _selectedItemPosition = index),
+      onTap: (index) => _selectedItemPosition = index,
 
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),

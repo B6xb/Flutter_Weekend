@@ -33,7 +33,7 @@ class KhawiHomePageState extends State<KhawiHomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: const KhawiBottomNavigationBar(),
+      bottomNavigationBar: KhawiBottomNavigationBar(),
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(5.0),
         child: FloatingActionButton(

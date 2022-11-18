@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:khawi/constants.dart';
 
 Color kMainColor = const Color(0xFF21325E);
 
