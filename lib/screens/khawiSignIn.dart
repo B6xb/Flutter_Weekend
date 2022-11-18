@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:khawi/constants.dart';
+import 'package:khawi/screens/khawiMainPage.dart';
+import 'package:khawi/screens/khawiSignUp.dart';
 
 class KhawiSignIn extends StatelessWidget {
   const KhawiSignIn({super.key});
@@ -8,19 +10,19 @@ class KhawiSignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Welcome',
-            style: kMainTextStyle,
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Welcome',
+              style: kMainTextStyle,
+            ),
+            const SizedBox(
+              height: 80,
+            ),
+            Center(
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -41,10 +43,10 @@ class KhawiSignIn extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Container(
+            const SizedBox(
+              height: 30,
+            ),
+            Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: kColor,
@@ -54,10 +56,14 @@ class KhawiSignIn extends StatelessWidget {
                 obscureText: true,
                 decoration: InputDecoration(
                   focusColor: Colors.green,
-                  suffixIcon: IconButton(
-                    splashColor: null,
-                    icon: const Icon(Icons.arrow_forward_rounded),
-                    onPressed: () {},
+                  suffixIcon: GestureDetector(
+                    child: const Icon(Icons.arrow_forward_rounded),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const KhawiHomePage()));
+                    },
                   ),
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
                   prefixIconColor: kButtonsColor,
@@ -69,8 +75,40 @@ class KhawiSignIn extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account?",
+                  style: kMainTextStyle.copyWith(
+                    fontSize: 15,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const KhawiSignUp()));
+                  },
+                  child: Text(
+                    'Register',
+                    style: kMainTextStyle.copyWith(
+                      fontSize: 15,
+                      color: kButtonsColor,
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
       backgroundColor: kMainColor,
     );

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "652310077439",
+    "project_id": "khawo-fluuter-we",
+    "storage_bucket": "khawo-fluuter-we.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652310077439:android:f5011ffa3158307f1551ca",
+        "android_client_info": {
+          "package_name": "com.example.khawi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652310077439-539pftjttgsjib6c9c6evbl2qo4eo67d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0RT27FfG8-PgPkhpJyBecEhHDJhIEJDo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652310077439-539pftjttgsjib6c9c6evbl2qo4eo67d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
