@@ -4,6 +4,7 @@ class Khawi {
   String _name;
   Image _picture;
   String _bio;
+  String _phoneNumber;
   final String _email;
   String _password;
   String _nationality;
@@ -16,6 +17,7 @@ class Khawi {
       String name,
       Image picture,
       String bio,
+      String phoneNumber,
       String email,
       String password,
       String accountCreationTime,
@@ -26,6 +28,7 @@ class Khawi {
       : _name = name,
         _picture = picture,
         _bio = bio,
+        _phoneNumber = phoneNumber,
         _password = password,
         _nationality = nationality,
         _birthDate = birthDate,
@@ -85,4 +88,10 @@ class Khawi {
   }
 
   String get accountCreationTime => _accountCreationTime;
+
+  String get phoneNumber => _phoneNumber;
+
+  set phoneNumber(String value) {
+    _phoneNumber = value;
+  }
 }
