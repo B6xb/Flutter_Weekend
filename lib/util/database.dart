@@ -13,6 +13,6 @@ class Database {
     final docSnap = await packageRef.get();
     final packageList =
         docSnap.docs.map((e) => e.data()).toList(); // Convert to City object
-    return packageList;
+    return await packageList;
   }
 }

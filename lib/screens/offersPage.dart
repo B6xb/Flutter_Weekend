@@ -13,22 +13,6 @@ class OffersPage extends StatefulWidget {
 }
 
 class _OffersPageState extends State<OffersPage> {
-  Khawi khawi = Khawi(
-      name: name,
-      phoneNumber: phoneNumber,
-      email: email,
-      accountCreationTime: accountCreationTime,
-      nationality: nationality,
-      gender: gender);
-  List<Offer> o = [
-    Offer(
-        title: "culture expert",
-        description: "I will go with you to...",
-        price: 50,
-        khawi: Khawi,
-        city: city)
-  ];
-
   @override
   Container offerBox(
       String title, double price, String name, String city, String rate) {
@@ -84,6 +68,28 @@ class _OffersPageState extends State<OffersPage> {
   }
 
   Widget build(BuildContext context) {
+    Khawi khawi = Khawi(
+        name: "Bander",
+        phoneNumber: "055554654",
+        email: "aaa@gmail.com",
+        accountCreationTime: "12:334",
+        nationality: "saudi",
+        gender: "M");
+    List<Offer> o = [
+      Offer(
+          title: "culture expert",
+          description: "I will go with you to...",
+          price: 50,
+          khawi: khawi,
+          city: "dammam"),
+      Offer(
+          title: "mountains expert",
+          description: "I will go with you to...",
+          price: 50,
+          khawi: khawi,
+          city: "apha"),
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -100,6 +106,11 @@ class _OffersPageState extends State<OffersPage> {
             SizedBox(
               height: 20,
             ),
+
+            // String title, double price, String name, String city,  String rate    for(int i=0;i<o.length;i++)
+            for (int i = 0; i < o.length; i++)
+              offerBox(o[i].title, o[i].price, o[i].khawi.name, o[i].city,
+                  o[i].khawi.rate)
           ],
         ),
       ),

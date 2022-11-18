@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:khawi/classes/firebase_service.dart';
+import 'package:khawi/util/firebase_service.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/components/khawiBottomNaBar.dart';
 
@@ -42,21 +42,8 @@ class KhawiHomePageState extends State<KhawiHomePage> {
         child: FloatingActionButton(
           backgroundColor: kButtonsColor,
           onPressed: () {
-
-
-
-
             FirebaseAuth auth = firebase_service.auth;
             FirebaseFirestore firestore = firebase_service.firestore;
-
-
-
-
-
-
-
-
-
           },
           child: const Icon(
             Icons.person,
