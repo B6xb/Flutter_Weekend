@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
-
+import 'package:khawi/screens/packagePage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'screens/khawiSignIn.dart';
 
-void main() {
+
+void main() async {
+await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 
@@ -15,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Dosis'),
       title: 'Khawi',
-      home: KhawiSignIn(),
+      home: packagePage(),
     );
   }
 }

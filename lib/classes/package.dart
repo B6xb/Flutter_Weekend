@@ -1,38 +1,36 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Package {
-  String _title;
-  int _numberOfDays;
-  int _numberOfReservations;
-  double _price;
+  String title;
+  int numberOfDays;
+  int numberOfReservations;
+  double price;
 
-  Package(String title, int numOfDays, int numOfReserations, double price)
-      : _title = title,
-        _numberOfDays = numOfDays,
-        _numberOfReservations = numOfReserations,
-        _price = price;
+  Package(
+      {required this.title,
+      required this.numberOfDays,
+      required this.numberOfReservations,
+      required this.price});
 
-  String get title => _title;
-
-  set title(String value) {
-    _title = value;
+  factory Package.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return Package(
+      title: data?['title'],
+      numberOfDays: data?['numberOfDays'],
+      numberOfReservations: data?['numberOfReservations'],
+      price: data?['price'],
+    );
   }
 
-  int get numberOfDays => _numberOfDays;
-
-  set numberOfDays(int value) {
-    _numberOfDays = value;
-  }
-
-  int get numberOfReservations => _numberOfReservations;
-
-  set numberOfReservations(int value) {
-    _numberOfReservations = value;
-  }
-
-  double get price => _price;
-
-  set price(double value) {
-    _price = value;
+  Map<String, dynamic> toFirestore() {
+    return {
+      "title": title,
+      "numberOfDays": numberOfDays,
+      "numberOfReservations": numberOfReservations,
+      "price": price,
+    };
   }
 }
