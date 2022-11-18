@@ -41,7 +41,7 @@ class Offer {
       "price": price,
       "khawi": khawi,
       "city": city,
-      if (tourist != null) "tourists": tourist,
+      if (tourist != null) "tourist": tourist,
     };
   }
 }
