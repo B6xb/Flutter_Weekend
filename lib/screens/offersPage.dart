@@ -11,8 +11,47 @@ class OffersPage extends StatefulWidget {
 
 class _OffersPageState extends State<OffersPage> {
   @override
-  Container OfferBox() {
-    return Container();
+  Container offerBox(String title, String description, double price,
+      String name, String city) {
+    return Container(
+      width: double.infinity,
+      height: 200,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
+      margin: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Text(
+                  "$title",
+                  style: TextStyle(color: Colors.black, fontSize: 30),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "$name",
+                  style: TextStyle(fontSize: 15, color: Colors.blueGrey),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              "$price SR",
+              style: TextStyle(color: Colors.green, fontSize: 30),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget build(BuildContext context) {
