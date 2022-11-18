@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:khawi/classes/khawi.dart';
+import 'package:khawi/classes/tourist.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/components/khawiBottomNaBar.dart';
+import '../classes/offer.dart';
 
 class OffersPage extends StatefulWidget {
-  const OffersPage({Key? key}) : super(key: key);
+  OffersPage({Key? key}) : super(key: key);
 
   @override
   State<OffersPage> createState() => _OffersPageState();
@@ -11,8 +14,8 @@ class OffersPage extends StatefulWidget {
 
 class _OffersPageState extends State<OffersPage> {
   @override
-  Container offerBox(String title, String description, double price,
-      String name, String city) {
+  Container offerBox(
+      String title, double price, String name, String city, String rate) {
     return Container(
       width: double.infinity,
       height: 200,
@@ -39,6 +42,16 @@ class _OffersPageState extends State<OffersPage> {
                   "$name",
                   style: TextStyle(fontSize: 15, color: Colors.blueGrey),
                 ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                    ),
+                    Text("$rate"),
+                  ],
+                ),
+                Text("$city"),
               ],
             ),
           ),
@@ -55,6 +68,28 @@ class _OffersPageState extends State<OffersPage> {
   }
 
   Widget build(BuildContext context) {
+    Khawi khawi = Khawi(
+        name: "Bander",
+        phoneNumber: "055554654",
+        email: "aaa@gmail.com",
+        accountCreationTime: "12:334",
+        nationality: "saudi",
+        gender: "M");
+    List<Offer> o = [
+      Offer(
+          title: "culture expert",
+          description: "I will go with you to...",
+          price: 50,
+          khawi: khawi,
+          city: "dammam"),
+      Offer(
+          title: "mountains expert",
+          description: "I will go with you to...",
+          price: 50,
+          khawi: khawi,
+          city: "apha"),
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -68,6 +103,14 @@ class _OffersPageState extends State<OffersPage> {
                 style: kMainTextStyle,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+
+            // String title, double price, String name, String city,  String rate    for(int i=0;i<o.length;i++)
+            for (int i = 0; i < o.length; i++)
+              offerBox(o[i].title, o[i].price, o[i].khawi.name, o[i].city,
+                  o[i].khawi.rate)
           ],
         ),
       ),

@@ -2,19 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:khawi/classes/package.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/components/khawiBottomNaBar.dart';
+import '';
+import '../util/database.dart';
 
 class packagePage extends StatelessWidget {
   packagePage({Key? key}) : super(key: key);
-
-  List<Package> p = [
-    Package(title: "1st", numberOfDays: 3, numberOfReservations: 6, price: 100),
-    Package(
-        title: "2nd", numberOfDays: 7, numberOfReservations: 12, price: 200),
-    Package(
-        title: "3rd", numberOfDays: 15, numberOfReservations: 20, price: 400),
-    Package(
-        title: "4th", numberOfDays: 30, numberOfReservations: 40, price: 800),
-  ];
 
   Container packageBox(int days, double price, int numOfReservations) {
     return Container(
@@ -60,6 +52,8 @@ class packagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<List<Package>> p = Database.getAllPackages();
+
     return Scaffold(
       body: SafeArea(
         child: ListView(
