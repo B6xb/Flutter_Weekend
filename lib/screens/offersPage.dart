@@ -15,7 +15,7 @@ class OffersPage extends StatefulWidget {
 class _OffersPageState extends State<OffersPage> {
   @override
   Container offerBox(
-      String title, double price, String name, String city, String rate) {
+      String title, double price, String name, String city, double? rate) {
     return Container(
       width: double.infinity,
       height: 200,
@@ -74,7 +74,8 @@ class _OffersPageState extends State<OffersPage> {
         email: "aaa@gmail.com",
         accountCreationTime: "12:334",
         nationality: "saudi",
-        gender: "M");
+        gender: "M")
+      ..rate = 2.5;
     List<Offer> o = [
       Offer(
           title: "culture expert",
@@ -110,7 +111,7 @@ class _OffersPageState extends State<OffersPage> {
             // String title, double price, String name, String city,  String rate    for(int i=0;i<o.length;i++)
             for (int i = 0; i < o.length; i++)
               offerBox(o[i].title, o[i].price, o[i].khawi.name, o[i].city,
-                  o[i].khawi.rate)
+                  khawi.rate),
           ],
         ),
       ),
