@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:khawi/classes/package.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/components/khawiBottomNaBar.dart';
+import 'package:khawi/providers.dart';
 import '';
 import '../util/database.dart';
 
-class packagePage extends StatelessWidget {
+class packagePage extends ConsumerWidget {
   packagePage({Key? key}) : super(key: key);
 
   Container packageBox(int days, double price, int numOfReservations) {
@@ -51,9 +53,8 @@ class packagePage extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    Future<List<Package>> p = Database.getAllPackages();
-
+  Widget build(BuildContext context, WidgetRef ref) {
+    AsyncValue<List<Package>> asyncPackages = ref.read(packagesProvider);
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -70,9 +71,15 @@ class packagePage extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            for (int i = 0; i < p.length; i++)
-              packageBox(
-                  p[i].numberOfDays, p[i].price, p[i].numberOfReservations),
+            ...asyncPackages.when(
+              loading: () => const [CircularProgressIndicator()],
+              error: (err, stack) => [Text('Error: $err')],
+              data: (packages) => [
+                for (int i = 0; i < packages.length; i++)
+                  packageBox(packages[i].numberOfDays, packages[i].price,
+                      packages[i].numberOfReservations)
+              ],
+            )
           ],
         ),
       ),

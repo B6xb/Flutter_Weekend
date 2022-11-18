@@ -1,18 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:khawi/classes/package.dart';
+import 'package:khawi/util/database.dart';
 
-Future<void> main() async {
-  try {
-    UserCredential userCredential = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(
-            email: "barry.allen@example.com", password: "SuperSecretPassword!");
-    userCredential.user!.email;
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
-    } else if (e.code == 'email-already-in-use') {
-      print('The account already exists for that email.');
-    }
-  } catch (e) {
-    print(e);
-  }
-}
+final packagesProvider =
+    FutureProvider<List<Package>>((ref) async => Database.getAllPackages());
