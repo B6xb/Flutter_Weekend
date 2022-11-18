@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
+import 'package:khawi/screens/offersPage.dart';
 import 'package:khawi/screens/packagePage.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Dosis'),
       title: 'Khawi',
-      home: packagePage(),
+      home: OffersPage(),
     );
   }
 }

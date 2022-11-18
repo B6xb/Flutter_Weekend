@@ -5,7 +5,7 @@ import 'package:khawi/components/khawiBottomNaBar.dart';
 class packagePage extends StatelessWidget {
   const packagePage({Key? key}) : super(key: key);
 
-  Container packageBox(int days, double price) {
+  Container packageBox(int days, double price, int numOfReservations) {
     return Container(
       width: double.infinity,
       height: 100,
@@ -19,9 +19,20 @@ class packagePage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(
-              "$days days Package",
-              style: TextStyle(color: Colors.black, fontSize: 30),
+            child: Column(
+              children: [
+                Text(
+                  "$days days Package",
+                  style: TextStyle(color: Colors.black, fontSize: 30),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "$numOfReservations reservations",
+                  style: TextStyle(fontSize: 15, color: Colors.blueGrey),
+                ),
+              ],
             ),
           ),
           Padding(
@@ -54,12 +65,10 @@ class packagePage extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            packageBox(3, 100),
-            packageBox(7, 200),
-            packageBox(15, 400),
-            packageBox(30, 800),
-            packageBox(30, 800),
-            packageBox(30, 800),
+            packageBox(3, 100, 6),
+            packageBox(7, 200, 12),
+            packageBox(15, 400, 20),
+            packageBox(30, 800, 40),
           ],
         ),
       ),
