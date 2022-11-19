@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:khawi/screens/dummy.dart';
+import 'package:khawi/screens/khawiMainPage.dart';
+import 'package:khawi/screens/khawiPackages.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
 import 'package:khawi/util/firebase_service.dart';
 

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:khawi/classes/tourist.dart';
 import 'package:khawi/constants.dart';
-import 'package:khawi/screens/dummy.dart';
+import 'package:khawi/screens/khawiMainPage.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
 import 'package:khawi/util/database.dart';
 import 'package:khawi/util/firebase_service.dart';
@@ -61,6 +61,7 @@ class KhawiSignUp extends StatelessWidget {
                       color: kColor,
                     ),
                     child: TextField(
+                      controller: fNameControler,
                       cursorColor: kMainColor,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(
@@ -83,6 +84,7 @@ class KhawiSignUp extends StatelessWidget {
                       color: kColor,
                     ),
                     child: TextField(
+                      controller: lNaemControler,
                       cursorColor: kMainColor,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(
@@ -169,7 +171,7 @@ class KhawiSignUp extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
@@ -187,8 +189,10 @@ class KhawiSignUp extends StatelessWidget {
                           await auth.createUserWithEmailAndPassword(
                               email: emailControler.text,
                               password: passwordControler.text);
-                      Tourist tourist = Tourist(
-                          name: fNameControler.text + " " + lNaemControler.text,
+                      String name =
+                          fNameControler.text + " " + lNaemControler.text;
+                      Tourist tourist = new Tourist(
+                          name: name,
                           email: emailControler.text,
                           accountCreationTime: DateTime.now(),
                           nationality: "Saudi",
