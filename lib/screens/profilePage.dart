@@ -28,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
     gender: "Male",
     balance: 100,
     birthDate: "12/1/1999",
-  );
+  )..bio = "I am traveller";
 
   final bioController = TextEditingController();
   final firstNController = TextEditingController();
@@ -77,9 +77,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 200,
                 child: TextField(
                   controller: bioController,
-                  onChanged: (ind) {
-                    bioController.text;
-                  },
                   cursorColor: kMainColor,
                   decoration: InputDecoration(
                       border:
@@ -88,61 +85,34 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding: EdgeInsets.all(20.0),
                       ),
                       fillColor: kColor,
-                      hintText: 'write your Bio to let others know you'),
+                      hintText: tourist.bio),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: kColor,
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: kColor,
+                  ),
+                  child: TextField(
+                    controller: firstNController,
+                    cursorColor: kMainColor,
+                    decoration: InputDecoration(
+                      border:
+                          const OutlineInputBorder(borderSide: BorderSide.none),
+                      prefixIcon: const Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Icon(null),
                       ),
-                      child: TextField(
-                        controller: firstNController,
-                        cursorColor: kMainColor,
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          prefixIcon: const Padding(
-                            padding: EdgeInsets.all(20.0),
-                            child: Icon(null),
-                          ),
-                          fillColor: kColor,
-                          hintText: 'First Name',
-                        ),
-                      ),
+                      fillColor: kColor,
+                      hintText: tourist.name,
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: kColor,
-                      ),
-                      child: TextField(
-                        controller: lastNController,
-                        cursorColor: kMainColor,
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide.none),
-                          prefixIcon: const Padding(
-                            padding: EdgeInsets.all(20.0),
-                            child: Icon(null),
-                          ),
-                          fillColor: kColor,
-                          hintText: 'Last Name',
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -209,7 +179,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: Icon(null),
                           ),
                           fillColor: kColor,
-                          hintText: 'Nationality',
+                          hintText: tourist.nationality,
                         ),
                       ),
                     ),
