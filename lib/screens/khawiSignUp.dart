@@ -84,7 +84,7 @@ class KhawiSignUp extends StatelessWidget {
                       color: kColor,
                     ),
                     child: TextField(
-                      controller: fNameControler,
+                      controller: lNaemControler,
                       cursorColor: kMainColor,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(
