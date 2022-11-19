@@ -15,6 +15,7 @@ class GetPage {
   static Widget getHomePage() {
   
     log(GetPage.authChange.toString());
+    
     if (GetPage.authChange == null) {
       return KhawiSignIn();
     } else {
