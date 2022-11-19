@@ -23,12 +23,14 @@ class Database {
   }
 
   static Future<List<Offer>> getAllOffers() async {
-    final docSnap = await offerRef.orderBy().get();
+    final docSnap =
+        await offerRef.orderBy("creationDateTime", descending: true).get();
     return docSnap.docs.map((e) => e.data()).toList();
   }
 
-  // static Future<Offer> getOfferByTourist() async {
-  //   final docSnap = touristRef;
-  //   return 
-  // }
+  static Future<List<Offer>> getOffersByTourist(Tourist otherTourist) async {
+    final docSnap =
+        await offerRef.where("tourist", isEqualTo: otherTourist).get();
+    return docSnap.docs.map((e) => e.data()).toList();
+  }
 }

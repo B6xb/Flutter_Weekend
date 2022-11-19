@@ -61,4 +61,10 @@ class Tourist {
       if (rate != null) "rate": rate,
     };
   }
+
+  @override
+  bool operator ==(Object other) => other.hashCode == hashCode;
+
+  @override
+  int get hashCode => email.hashCode;
 }
