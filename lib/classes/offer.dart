@@ -7,6 +7,9 @@ class Offer {
   String title;
   String description;
   double price;
+  DateTime startDateTime;
+  DateTime endDateTime;
+  final DateTime creationDateTime;
   final Khawi khawi;
   String city;
   Tourist? tourist;
@@ -16,7 +19,10 @@ class Offer {
       required this.description,
       required this.price,
       required this.khawi,
-      required this.city});
+      required this.city,
+      required this.startDateTime,
+      required this.endDateTime,
+      required this.creationDateTime});
 
   factory Offer.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -29,8 +35,11 @@ class Offer {
       price: data?['price'],
       khawi: data?['khawi'],
       city: data?['city'],
+      startDateTime: data?['startDateTime'],
+      endDateTime: data?['endDateTime'],
+      creationDateTime: data?['creationDateTime'],
     );
-    offer.tourist = data?['tourists'];
+    offer.tourist = data?['tourist'];
     return offer;
   }
 
@@ -42,6 +51,9 @@ class Offer {
       "khawi": khawi,
       "city": city,
       if (tourist != null) "tourist": tourist,
+      "startDateTime": startDateTime,
+      "endDateTime": endDateTime,
+      "creationDateTime": creationDateTime,
     };
   }
 }

@@ -71,15 +71,38 @@ class packagePage extends ConsumerWidget {
             SizedBox(
               height: 20,
             ),
-            ...asyncPackages.when(
-              loading: () => const [CircularProgressIndicator()],
-              error: (err, stack) => [Text('Error: $err')],
-              data: (packages) => [
-                for (int i = 0; i < packages.length; i++)
-                  packageBox(packages[i].numberOfDays, packages[i].price,
-                      packages[i].numberOfReservations)
-              ],
-            )
+            FutureBuilder(
+                future: Database.getAllPackages(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState != ConnectionState.done) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text(
+                      'Error: ${snapshot.error}',
+                      style: const TextStyle(color: Colors.white),
+                    );
+                  } else {
+                    final packages = snapshot.data!;
+                    return Column(
+                      children: [
+                        for (int i = 0; i < packages.length; i++)
+                          packageBox(
+                              packages[i].numberOfDays,
+                              packages[i].price,
+                              packages[i].numberOfReservations)
+                      ],
+                    );
+                  }
+                  //   ...asyncPackages.when(
+                  //   loading: () => const [CircularProgressIndicator()],
+                  //   error: (err, stack) => [Text('Error: $err')],
+                  //   data: (packages) => [
+                  //     for (int i = 0; i < packages.length; i++)
+                  //       packageBox(packages[i].numberOfDays, packages[i].price,
+                  //           packages[i].numberOfReservations)
+                  //   ],
+                  // )
+                }),
           ],
         ),
       ),

@@ -9,7 +9,8 @@ class Tourist {
   final String nationality;
   final String gender;
   String? birthDate;
-  final String accountCreationTime;
+  final DateTime accountCreationTime;
+  double balance;
   // Not in constructor
   Package? currentPackage;
   String? bio;
@@ -21,7 +22,8 @@ class Tourist {
       required this.accountCreationTime,
       required this.nationality,
       this.birthDate,
-      required this.gender});
+      required this.gender,
+      required this.balance});
 
   factory Tourist.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
@@ -35,6 +37,7 @@ class Tourist {
       nationality: data?['nationality'],
       birthDate: data?['birthDate'],
       gender: data?['gender'],
+      balance: data?['balance'],
       // regions:
       // data?['regions'] is Iterable ? List.from(data?['regions']) : null,
     );
@@ -52,6 +55,7 @@ class Tourist {
       "nationality": nationality,
       if (birthDate != null) "birthDate": birthDate,
       "gender": gender,
+      "balance": balance,
       if (bio != null) "bio": bio,
       if (currentPackage != null) "currentPackage": currentPackage,
       if (rate != null) "rate": rate,
