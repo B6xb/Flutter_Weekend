@@ -54,7 +54,6 @@ class packagePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<List<Package>> asyncPackages = ref.read(packagesProvider);
     return Scaffold(
       body: SafeArea(
         child: ListView(

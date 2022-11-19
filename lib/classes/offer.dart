@@ -6,7 +6,7 @@ import 'tourist.dart';
 class Offer {
   String title;
   String description;
-  double price;
+  double? price;
   DateTime startDateTime;
   DateTime endDateTime;
   final DateTime creationDateTime;
@@ -17,7 +17,7 @@ class Offer {
   Offer(
       {required this.title,
       required this.description,
-      required this.price,
+      this.price,
       required this.khawi,
       required this.city,
       required this.startDateTime,
@@ -47,10 +47,10 @@ class Offer {
     return {
       "title": title,
       "description": description,
-      "price": price,
-      "khawi": khawi,
+      if (price != null) "price": price,
+      "khawi": khawi.toFirestore(),
       "city": city,
-      if (tourist != null) "tourist": tourist,
+      if (tourist != null) "tourist": tourist!.toFirestore(),
       "startDateTime": startDateTime,
       "endDateTime": endDateTime,
       "creationDateTime": creationDateTime,

@@ -70,34 +70,34 @@ class _OffersPageState extends State<OffersPage> {
   }
 
   Widget build(BuildContext context) {
-    Khawi khawi = Khawi(
-        name: "Bander",
-        phoneNumber: "055554654",
-        email: "aaa@gmail.com",
-        accountCreationTime: DateTime.now(),
-        nationality: "saudi",
-        gender: "M")
-      ..rate = 2.5;
-    List<Offer> o = [
-      Offer(
-          title: "culture expert",
-          description: "I will go with you to...",
-          price: 50,
-          khawi: khawi,
-          city: "dammam",
-          startDateTime: DateTime.now(),
-          endDateTime: DateTime.now(),
-          creationDateTime: DateTime.now()),
-      Offer(
-          title: "mountains expert",
-          description: "I will go with you to...",
-          price: 50,
-          khawi: khawi,
-          city: "apha",
-          startDateTime: DateTime.now(),
-          endDateTime: DateTime.now(),
-          creationDateTime: DateTime.now()),
-    ];
+    // Khawi khawi = Khawi(
+    //     name: "Bander",
+    //     phoneNumber: "055554654",
+    //     email: "aaa@gmail.com",
+    //     accountCreationTime: DateTime.now(),
+    //     nationality: "saudi",
+    //     gender: "M")
+    //   ..rate = 2.5;
+    // List<Offer> o = [
+    //   Offer(
+    //       title: "culture expert",
+    //       description: "I will go with you to...",
+    //       price: 50,
+    //       khawi: khawi,
+    //       city: "dammam",
+    //       startDateTime: DateTime.now(),
+    //       endDateTime: DateTime.now(),
+    //       creationDateTime: DateTime.now()),
+    //   Offer(
+    //       title: "mountains expert",
+    //       description: "I will go with you to...",
+    //       price: 50,
+    //       khawi: khawi,
+    //       city: "apha",
+    //       startDateTime: DateTime.now(),
+    //       endDateTime: DateTime.now(),
+    //       creationDateTime: DateTime.now()),
+    // ];
 
     return Scaffold(
       body: SafeArea(
