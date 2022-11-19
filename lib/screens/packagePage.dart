@@ -93,15 +93,6 @@ class packagePage extends ConsumerWidget {
                       ],
                     );
                   }
-                  //   ...asyncPackages.when(
-                  //   loading: () => const [CircularProgressIndicator()],
-                  //   error: (err, stack) => [Text('Error: $err')],
-                  //   data: (packages) => [
-                  //     for (int i = 0; i < packages.length; i++)
-                  //       packageBox(packages[i].numberOfDays, packages[i].price,
-                  //           packages[i].numberOfReservations)
-                  //   ],
-                  // )
                 }),
           ],
         ),
