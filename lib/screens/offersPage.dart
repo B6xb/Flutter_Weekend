@@ -130,8 +130,13 @@ class _OffersPageState extends State<OffersPage> {
                     final offers = snapshot.data!;
                     return Column(
                       children: [
-                        for (int i = 0; i < offers.length; i++)
-                          OfferBox(offer: offers[i])
+                        // for (int i = 0; i < offers.length; i++)
+                        //   OfferBox(offer: offers[i])
+                        offerBox("culture expert", 250, "Salman", "Ahsa", 4.5),
+                        offerBox("streets expert", 300, "Ali", "Abha", 4),
+                        offerBox(
+                            "museums expert", 200, "Mohammad", "Riyadh", 3.5),
+                        offerBox("farms expert", 250, "Aqeel", "Ahsa", 4.5),
                       ],
                     );
                   }
