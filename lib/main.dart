@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Dosis'),
       title: 'Khawi',
-      home: Orders(),
+      home:  Orders(),
     );
   }
 }
