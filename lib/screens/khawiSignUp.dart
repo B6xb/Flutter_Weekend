@@ -187,8 +187,10 @@ class KhawiSignUp extends StatelessWidget {
                           await auth.createUserWithEmailAndPassword(
                               email: emailControler.text,
                               password: passwordControler.text);
+                      String name =
+                          fNameControler.text + " " + lNaemControler.text;
                       Tourist tourist = new Tourist(
-                          name: fNameControler.text + " " + lNaemControler.text,
+                          name: name,
                           email: emailControler.text,
                           accountCreationTime: DateTime.now(),
                           nationality: "",
