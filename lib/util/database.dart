@@ -52,5 +52,11 @@ class Database {
     return await touristRef.add(tourist);
   }
 
+  static void updateTourist(Tourist otherTourist) async {
+    final docSnap =
+        await touristRef.where("email", isEqualTo: otherTourist.email).get();
+    final touristId = docSnap.docs[0].id;
+    await touristRef.doc(touristId).set(otherTourist);
+  }
   // static Future<DocumentReference<Tourist>>
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'khawi.dart';
@@ -33,13 +35,15 @@ class Offer {
       title: data?['title'],
       description: data?['description'],
       price: data?['price'],
-      khawi: Khawi.fromFirestore(data?['khawi'], null),
+      khawi: Khawi.fromMap(data?['khawi']),
       city: data?['city'],
-      startDateTime: data?['startDateTime'],
-      endDateTime: data?['endDateTime'],
-      creationDateTime: data?['creationDateTime'],
+      startDateTime: (data?['startDateTime'] as Timestamp).toDate(),
+      endDateTime: (data?['endDateTime'] as Timestamp).toDate(),
+      creationDateTime: (data?['creationDateTime'] as Timestamp).toDate(),
     );
-    offer.tourist = Tourist.fromFirestore(data?['tourist'], null);
+    log('test');
+    offer.tourist = Tourist.fromMap(data?['tourist']);
+
     return offer;
   }
 
