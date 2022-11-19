@@ -33,7 +33,7 @@ class Offer {
       title: data?['title'],
       description: data?['description'],
       price: data?['price'],
-      khawi: data?['khawi'],
+      khawi: Khawi.fromFirestore(data?['khawi'], options),
       city: data?['city'],
       startDateTime: data?['startDateTime'],
       endDateTime: data?['endDateTime'],
