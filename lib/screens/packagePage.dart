@@ -54,7 +54,6 @@ class packagePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AsyncValue<List<Package>> asyncPackages = ref.read(packagesProvider);
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -93,15 +92,6 @@ class packagePage extends ConsumerWidget {
                       ],
                     );
                   }
-                  //   ...asyncPackages.when(
-                  //   loading: () => const [CircularProgressIndicator()],
-                  //   error: (err, stack) => [Text('Error: $err')],
-                  //   data: (packages) => [
-                  //     for (int i = 0; i < packages.length; i++)
-                  //       packageBox(packages[i].numberOfDays, packages[i].price,
-                  //           packages[i].numberOfReservations)
-                  //   ],
-                  // )
                 }),
           ],
         ),

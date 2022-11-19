@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:khawi/classes/khawi.dart';
 import 'package:khawi/classes/tourist.dart';
+import 'package:khawi/components/offerBox.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/components/khawiBottomNaBar.dart';
+import 'package:khawi/util/database.dart';
 import '../classes/offer.dart';
 
 class OffersPage extends StatefulWidget {
@@ -68,35 +70,34 @@ class _OffersPageState extends State<OffersPage> {
   }
 
   Widget build(BuildContext context) {
-    Khawi khawi = Khawi(
-        name: "Bander",
-        phoneNumber: "055554654",
-        email: "aaa@gmail.com",
-        accountCreationTime: "12:334",
-        nationality: "saudi",
-        gender: "M")
-      ..rate = 2.5;
-    List<Offer> o = [
-      Offer(
-          title: "culture expert",
-          description: "I will go with you to...",
-          price: 50,
-          khawi: khawi,
-          city: "dammam",
-          startDateTime: DateTime.now(),
-          endDateTime: DateTime.now(),
-          creationDateTime: DateTime.now()
-          ),
-      Offer(
-          title: "mountains expert",
-          description: "I will go with you to...",
-          price: 50,
-          khawi: khawi,
-          city: "apha",
-          startDateTime: DateTime.now(),
-          endDateTime: DateTime.now(),
-          creationDateTime: DateTime.now()),
-    ];
+    // Khawi khawi = Khawi(
+    //     name: "Bander",
+    //     phoneNumber: "055554654",
+    //     email: "aaa@gmail.com",
+    //     accountCreationTime: DateTime.now(),
+    //     nationality: "saudi",
+    //     gender: "M")
+    //   ..rate = 2.5;
+    // List<Offer> o = [
+    //   Offer(
+    //       title: "culture expert",
+    //       description: "I will go with you to...",
+    //       price: 50,
+    //       khawi: khawi,
+    //       city: "dammam",
+    //       startDateTime: DateTime.now(),
+    //       endDateTime: DateTime.now(),
+    //       creationDateTime: DateTime.now()),
+    //   Offer(
+    //       title: "mountains expert",
+    //       description: "I will go with you to...",
+    //       price: 50,
+    //       khawi: khawi,
+    //       city: "apha",
+    //       startDateTime: DateTime.now(),
+    //       endDateTime: DateTime.now(),
+    //       creationDateTime: DateTime.now()),
+    // ];
 
     return Scaffold(
       body: SafeArea(
@@ -115,10 +116,31 @@ class _OffersPageState extends State<OffersPage> {
               height: 20,
             ),
 
-            // String title, double price, String name, String city,  String rate    for(int i=0;i<o.length;i++)
-            for (int i = 0; i < o.length; i++)
-              offerBox(o[i].title, o[i].price, o[i].khawi.name, o[i].city,
-                  khawi.rate),
+            FutureBuilder(
+                future: Database.getAllOffers(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState != ConnectionState.done) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text(
+                      'Error: ${snapshot.error}',
+                      style: const TextStyle(color: Colors.white),
+                    );
+                  } else {
+                    final offers = snapshot.data!;
+                    return Column(
+                      children: [
+                        for (int i = 0; i < offers.length; i++)
+                          OfferBox(offer: offers[i])
+                      ],
+                    );
+                  }
+                }),
+
+            // // String title, double price, String name, String city,  String rate    for(int i=0;i<o.length;i++)
+            // for (int i = 0; i < o.length; i++)
+            //   offerBox(o[i].title, o[i].price, o[i].khawi.name, o[i].city,
+            //       khawi.rate),
           ],
         ),
       ),

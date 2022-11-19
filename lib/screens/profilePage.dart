@@ -5,7 +5,7 @@ import 'package:date_field/date_field.dart';
 import 'package:khawi/classes/tourist.dart';
 
 import '../constants.dart';
-import 'dummy.dart';
+import 'khawiMainPage.dart';
 
 class ProfilePage extends StatefulWidget {
   @override

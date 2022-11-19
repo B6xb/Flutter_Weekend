@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:khawi/classes/tourist.dart';
 import 'package:khawi/constants.dart';
-import 'package:khawi/screens/dummy.dart';
+import 'package:khawi/screens/khawiMainPage.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
+import 'package:khawi/util/database.dart';
 import 'package:khawi/util/firebase_service.dart';
-
 
 class KhawiSignUp extends StatelessWidget {
   KhawiSignUp({super.key});
-    FirebaseAuth auth = firebase_service.auth;
+  FirebaseAuth auth = firebase_service.auth;
   FirebaseFirestore firestore = firebase_service.firestore;
-    TextEditingController fNameControler = new TextEditingController();
+  TextEditingController fNameControler = new TextEditingController();
   TextEditingController lNaemControler = new TextEditingController();
   TextEditingController emailControler = new TextEditingController();
   TextEditingController passwordControler = new TextEditingController();
   TextEditingController passwordControler2 = new TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +61,7 @@ class KhawiSignUp extends StatelessWidget {
                       color: kColor,
                     ),
                     child: TextField(
+                      controller: fNameControler,
                       cursorColor: kMainColor,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(
@@ -83,6 +84,7 @@ class KhawiSignUp extends StatelessWidget {
                       color: kColor,
                     ),
                     child: TextField(
+                      controller: lNaemControler,
                       cursorColor: kMainColor,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(
@@ -169,7 +171,7 @@ class KhawiSignUp extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
@@ -181,30 +183,36 @@ class KhawiSignUp extends StatelessWidget {
               child: GestureDetector(
                 child: const Icon(Icons.arrow_forward_rounded),
                 onTap: () async {
-
-  if(passwordControler.text == passwordControler2.text ){
-try {
-UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-    email: emailControler.text,
-    password: passwordControler.text
-  );
-    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const KhawiHomePage()));
-} on FirebaseAuthException catch (e) {
-  if (e.code == 'weak-password') {
-    print('The password provided is too weak.');
-  } else if (e.code == 'email-already-in-use') {
-    print('The account already exists for that email.');
-  }
-} catch (e) {
-  print(e);
-}
-
-
-  }
-
+                  if (passwordControler.text == passwordControler2.text) {
+                    try {
+                      UserCredential userCredential =
+                          await auth.createUserWithEmailAndPassword(
+                              email: emailControler.text,
+                              password: passwordControler.text);
+                      String name =
+                          fNameControler.text + " " + lNaemControler.text;
+                      Tourist tourist = new Tourist(
+                          name: name,
+                          email: emailControler.text,
+                          accountCreationTime: DateTime.now(),
+                          nationality: "Saudi",
+                          gender: "Male",
+                          balance: 0);
+                      Database.addTourist(tourist);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const KhawiHomePage()));
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'weak-password') {
+                        print('The password provided is too weak.');
+                      } else if (e.code == 'email-already-in-use') {
+                        print('The account already exists for that email.');
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
+                  }
                 },
               ),
             ),
