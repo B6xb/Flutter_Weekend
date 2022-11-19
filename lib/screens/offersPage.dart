@@ -74,7 +74,7 @@ class _OffersPageState extends State<OffersPage> {
         name: "Bander",
         phoneNumber: "055554654",
         email: "aaa@gmail.com",
-        accountCreationTime: "12:334",
+        accountCreationTime: DateTime.now(),
         nationality: "saudi",
         gender: "M")
       ..rate = 2.5;
@@ -87,8 +87,7 @@ class _OffersPageState extends State<OffersPage> {
           city: "dammam",
           startDateTime: DateTime.now(),
           endDateTime: DateTime.now(),
-          creationDateTime: DateTime.now()
-          ),
+          creationDateTime: DateTime.now()),
       Offer(
           title: "mountains expert",
           description: "I will go with you to...",
