@@ -8,7 +8,7 @@ class Tourist {
   final String email;
   final String nationality;
   final String gender;
-  String? birthDate;
+  DateTime? birthDate;
   final DateTime accountCreationTime;
   double balance;
   // Not in constructor
@@ -25,7 +25,27 @@ class Tourist {
       required this.gender,
       required this.balance});
 
-  
+  factory Tourist.fromMap(
+    Map<String, dynamic>? data,
+  ) {
+    var tourist = Tourist(
+      name: data?['name'],
+      email: data?['email'],
+      accountCreationTime: data?['accountCreationTime'],
+      nationality: data?['nationality'],
+      birthDate: data?['birthDate'] == null
+          ? null
+          : (data?['birthDate'] as Timestamp).toDate(),
+      gender: data?['gender'],
+      balance: data?['balance'],
+      // regions:
+      // data?['regions'] is Iterable ? List.from(data?['regions']) : null,
+    );
+    tourist.bio = data?['bio'];
+    tourist.currentPackage = data?['currentPackage'];
+    tourist.rate = data?['rate'];
+    return tourist;
+  }
 
   factory Tourist.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,

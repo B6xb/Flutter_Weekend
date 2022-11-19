@@ -20,7 +20,7 @@ class GetPage {
     if (GetPage.authChange == null) {
       return KhawiSignIn();
     } else {
-      return KhawiBottomNavigationBar();
+      return OffersPage();
     }
   }
 }

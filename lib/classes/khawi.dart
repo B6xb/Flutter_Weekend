@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +11,7 @@ class Khawi {
   final String nationality;
   final String gender;
   final DateTime accountCreationTime;
-  String? birthDate;
+  DateTime? birthDate;
 
   // Not in constructor
   String? bio;
@@ -24,18 +26,39 @@ class Khawi {
       this.birthDate,
       required this.gender});
 
+  factory Khawi.fromMap(
+    Map<String, dynamic>? data,
+  ) {
+    var khawi = Khawi(
+      name: data?['name'],
+      phoneNumber: data?['phoneNumber'],
+      email: data?['email'],
+      accountCreationTime: (data?['accountCreationTime'] as Timestamp).toDate(),
+      nationality: data?['nationality'],
+      birthDate: data?['birthDate'] == null
+          ? null
+          : (data?['birthDate'] as Timestamp).toDate(),
+      gender: data?['gender'],
+    );
+    khawi.bio = data?['bio'];
+    khawi.rate = data?['rate'];
+
+    return khawi;
+  }
+
   factory Khawi.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
     SnapshotOptions? options,
   ) {
+    log('test');
     final data = snapshot.data();
     var khawi = Khawi(
       name: data?['name'],
       phoneNumber: data?['phoneNumber'],
       email: data?['email'],
-      accountCreationTime: data?['accountCreationTime'],
+      accountCreationTime: (data?['accountCreationTime'] as Timestamp).toDate(),
       nationality: data?['nationality'],
-      birthDate: data?['birthDate'],
+      birthDate: (data?['birthDate'] as Timestamp).toDate(),
       gender: data?['gender'],
     );
     khawi.bio = data?['bio'];
