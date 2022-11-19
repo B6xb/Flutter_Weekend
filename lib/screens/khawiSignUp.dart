@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/screens/dummy.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
+import 'package:khawi/util/database.dart';
 import 'package:khawi/util/firebase_service.dart';
 
 
