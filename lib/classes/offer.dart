@@ -33,13 +33,13 @@ class Offer {
       title: data?['title'],
       description: data?['description'],
       price: data?['price'],
-      khawi: data?['khawi'],
+      khawi: Khawi.fromFirestore(data?['khawi'], null),
       city: data?['city'],
       startDateTime: data?['startDateTime'],
       endDateTime: data?['endDateTime'],
       creationDateTime: data?['creationDateTime'],
     );
-    offer.tourist = data?['tourist'];
+    offer.tourist = Tourist.fromFirestore(data?['tourist'], null);
     return offer;
   }
 
