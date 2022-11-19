@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:khawi/constants.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
-class KhawiBottomNavigationBar extends StatelessWidget {
+class KhawiBottomNavigationBar extends StatefulWidget {
+  const KhawiBottomNavigationBar({super.key});
+
+  @override
+  KhawiBottomNavigationBarState createState() =>
+      KhawiBottomNavigationBarState();
+}
+
+class KhawiBottomNavigationBarState extends State<KhawiBottomNavigationBar> {
   ShapeBorder? bottomBarShape = const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(25)),
   );
   SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.floating;
   EdgeInsets padding = const EdgeInsets.all(12);
 
-  int _selectedItemPosition = 2;
+  int _selectedItemPosition = 0;
   SnakeShape snakeShape = SnakeShape.indicator;
 
   bool showSelectedLabels = false;
@@ -37,16 +45,29 @@ class KhawiBottomNavigationBar extends StatelessWidget {
       showSelectedLabels: showSelectedLabels,
 
       currentIndex: _selectedItemPosition,
-      onTap: (index) => _selectedItemPosition = index,
+      onTap: (index) {
+        setState(() {
+          _selectedItemPosition = index;
+        });
+      },
 
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.history_outlined), label: 'order history'),
+          icon: Icon(Icons.home),
+          label: 'home',
+        ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined), label: 'packages'),
+          icon: Icon(Icons.history_outlined),
+          label: 'order history',
+        ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.local_offer_outlined), label: 'offers'),
+          icon: Icon(Icons.shopping_bag_outlined),
+          label: 'packages',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.local_offer_outlined),
+          label: 'offers',
+        ),
       ],
     );
   }

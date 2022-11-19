@@ -9,6 +9,7 @@ import 'firebase_options.dart';
 import 'screens/khawiSignIn.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Dosis'),
       title: 'Khawi',
-      home: KhawiSignUp(),
+      home: KhawiSignIn(),
     );
   }
 }

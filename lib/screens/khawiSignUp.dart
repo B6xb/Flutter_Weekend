@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khawi/constants.dart';
+import 'package:khawi/screens/dummy.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
 
 class KhawiSignUp extends StatelessWidget {
@@ -149,12 +150,27 @@ class KhawiSignUp extends StatelessWidget {
                     padding: EdgeInsets.all(20.0),
                     child: Icon(Icons.password),
                   ),
-                  suffixIcon: GestureDetector(
-                    child: const Icon(Icons.arrow_forward_rounded),
-                    onTap: () {},
-                  ),
                   hintText: 'Confirm Password',
                 ),
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: kButtonsColor,
+              ),
+              child: GestureDetector(
+                child: const Icon(Icons.arrow_forward_rounded),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const KhawiHomePage()));
+                },
               ),
             ),
           ],
