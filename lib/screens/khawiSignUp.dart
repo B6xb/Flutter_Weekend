@@ -181,11 +181,17 @@ class KhawiSignUp extends StatelessWidget {
               child: GestureDetector(
                 child: const Icon(Icons.arrow_forward_rounded),
                 onTap: () async {
+
+  if(passwordControler.text == passwordControler2.text ){
 try {
-  UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+UserCredential userCredential = await auth.createUserWithEmailAndPassword(
     email: emailControler.text,
     password: passwordControler.text
   );
+    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const KhawiHomePage()));
 } on FirebaseAuthException catch (e) {
   if (e.code == 'weak-password') {
     print('The password provided is too weak.');
@@ -197,11 +203,8 @@ try {
 }
 
 
+  }
 
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const KhawiHomePage()));
                 },
               ),
             ),
