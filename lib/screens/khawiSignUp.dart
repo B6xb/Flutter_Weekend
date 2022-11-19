@@ -195,8 +195,8 @@ class KhawiSignUp extends StatelessWidget {
                           name: name,
                           email: emailControler.text,
                           accountCreationTime: DateTime.now(),
-                          nationality: "",
-                          gender: "",
+                          nationality: "Saudi",
+                          gender: "Male",
                           balance: 0);
                       Database.addTourist(tourist);
                       Navigator.push(

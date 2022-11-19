@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:khawi/classes/khawi.dart';
@@ -38,6 +40,12 @@ class Database {
     return docSnap.docs.map((e) => e.data()).toList();
   }
 
+  static Future<Tourist> getTouristByEmail(String otherEmail) async {
+    final docSnap =
+        await touristRef.where("email", isEqualTo: otherEmail).get();
+    return docSnap.docs.map((e) => e.data()).toList()[0];
+  }
+
   static Future<DocumentReference<Offer>> addOffer(Offer offer) async {
     return await offerRef.add(offer);
   }
@@ -45,4 +53,6 @@ class Database {
   static Future<DocumentReference<Tourist>> addTourist(Tourist tourist) async {
     return await touristRef.add(tourist);
   }
+
+  // static Future<DocumentReference<Tourist>> 
 }

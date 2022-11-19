@@ -14,7 +14,7 @@ class Orders extends StatefulWidget {
 
 class _OrdersState extends State<Orders> {
   Container orderBox(
-      String title, double price, String name, String city, double? rate) {
+      String title, double? price, String name, String city, double? rate) {
     return Container(
       width: double.infinity,
       height: 200,
@@ -68,7 +68,7 @@ class _OrdersState extends State<Orders> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              "$price SR",
+              price == null ? "$price SR" : "",
               style: TextStyle(color: Colors.green, fontSize: 30),
             ),
           ),
