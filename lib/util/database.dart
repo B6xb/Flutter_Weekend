@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:khawi/classes/khawi.dart';
 import 'package:khawi/classes/offer.dart';
 import 'package:khawi/classes/tourist.dart';
 import 'package:khawi/util/firebase_service.dart';
@@ -17,6 +20,7 @@ class Database {
         fromFirestore: Tourist.fromFirestore,
         toFirestore: (Tourist tourist, _) => tourist.toFirestore(),
       );
+
   static Future<List<Package>> getAllPackages() async {
     final docSnap = await packageRef.get();
     return docSnap.docs.map((e) => e.data()).toList();
@@ -32,5 +36,13 @@ class Database {
     final docSnap =
         await offerRef.where("tourist", isEqualTo: otherTourist).get();
     return docSnap.docs.map((e) => e.data()).toList();
+  }
+
+  static Future<DocumentReference<Offer>> addOffer(Offer offer) async {
+    return await offerRef.add(offer);
+  }
+
+  static Future<DocumentReference<Tourist>> addTourist(Tourist tourist) async {
+    return await touristRef.add(tourist);
   }
 }
