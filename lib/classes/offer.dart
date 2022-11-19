@@ -41,8 +41,8 @@ class Offer {
       endDateTime: (data?['endDateTime'] as Timestamp).toDate(),
       creationDateTime: (data?['creationDateTime'] as Timestamp).toDate(),
     );
-    log('test');
-    offer.tourist = Tourist.fromMap(data?['tourist']);
+    offer.tourist =
+        data?['tourist'] == null ? null : Tourist.fromMap(data?['tourist']);
 
     return offer;
   }

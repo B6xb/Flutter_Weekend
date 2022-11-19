@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package.dart';
@@ -28,6 +30,8 @@ class Tourist {
   factory Tourist.fromMap(
     Map<String, dynamic>? data,
   ) {
+    log("test1");
+
     var tourist = Tourist(
       name: data?['name'],
       email: data?['email'],
@@ -41,6 +45,7 @@ class Tourist {
       // regions:
       // data?['regions'] is Iterable ? List.from(data?['regions']) : null,
     );
+
     tourist.bio = data?['bio'];
     tourist.currentPackage = data?['currentPackage'];
     tourist.rate = data?['rate'];

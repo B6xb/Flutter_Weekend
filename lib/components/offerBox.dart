@@ -61,7 +61,7 @@ class _OfferBoxState extends State<OfferBox> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              "${widget.offer.price} SR",
+              "${widget.offer.price ?? 0} SR",
               style: const TextStyle(color: Colors.green, fontSize: 30),
             ),
           ),
