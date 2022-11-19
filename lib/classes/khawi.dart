@@ -8,7 +8,7 @@ class Khawi {
   final String email;
   final String nationality;
   final String gender;
-  final String accountCreationTime;
+  final DateTime accountCreationTime;
   String? birthDate;
 
   // Not in constructor

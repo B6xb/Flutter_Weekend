@@ -5,16 +5,15 @@ import 'package:khawi/constants.dart';
 import 'package:khawi/components/khawiBottomNaBar.dart';
 import '../classes/offer.dart';
 
-class OffersPage extends StatefulWidget {
-  OffersPage({Key? key}) : super(key: key);
+class Orders extends StatefulWidget {
+  const Orders({Key? key}) : super(key: key);
 
   @override
-  State<OffersPage> createState() => _OffersPageState();
+  State<Orders> createState() => _OrdersState();
 }
 
-class _OffersPageState extends State<OffersPage> {
-  @override
-  Container offerBox(
+class _OrdersState extends State<Orders> {
+  Container orderBox(
       String title, double price, String name, String city, double? rate) {
     return Container(
       width: double.infinity,
@@ -40,18 +39,29 @@ class _OffersPageState extends State<OffersPage> {
                 ),
                 Text(
                   "$name",
-                  style: TextStyle(fontSize: 15, color: Colors.blueGrey),
+                  style: TextStyle(fontSize: 25, color: Colors.blueGrey),
                 ),
                 Row(
                   children: [
                     Icon(
                       Icons.star,
                       color: Colors.yellow,
+                      size: 30,
                     ),
-                    Text("$rate"),
+                    Text(
+                      "$rate",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
                   ],
                 ),
-                Text("$city"),
+                Text(
+                  "$city",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
               ],
             ),
           ),
@@ -67,6 +77,7 @@ class _OffersPageState extends State<OffersPage> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     Khawi khawi = Khawi(
         name: "Bander",
@@ -103,21 +114,24 @@ class _OffersPageState extends State<OffersPage> {
         child: ListView(
           children: [
             SizedBox(
-              height: 50,
+              height: 10,
             ),
-            Center(
-              child: Text(
-                "Offers",
-                style: kMainTextStyle,
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Colors.white,
+                ),
+                child: Center(
+                  child: Text(
+                    "Current Order",
+                    style: TextStyle(fontSize: 30, color: kMainColor),
+                  ),
+                ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-
-            // String title, double price, String name, String city,  String rate    for(int i=0;i<o.length;i++)
             for (int i = 0; i < o.length; i++)
-              offerBox(o[i].title, o[i].price, o[i].khawi.name, o[i].city,
+              orderBox(o[i].title, o[i].price, o[i].khawi.name, o[i].city,
                   khawi.rate),
           ],
         ),

@@ -1,22 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:khawi/constants.dart';
-import 'package:khawi/screens/dummy.dart';
-import 'package:khawi/screens/khawiSignIn.dart';
-import 'package:khawi/util/firebase_service.dart';
 
+import '../constants.dart';
+import 'dummy.dart';
 
-class KhawiSignUp extends StatelessWidget {
-  KhawiSignUp({super.key});
-  FirebaseAuth auth = firebase_service.auth;
-  FirebaseFirestore firestore = firebase_service.firestore;
-  TextEditingController fNameControler = new TextEditingController();
-  TextEditingController lNaemControler = new TextEditingController();
-  TextEditingController emailControler = new TextEditingController();
-  TextEditingController passwordControler = new TextEditingController();
-  TextEditingController passwordControler2 = new TextEditingController();
-
+class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -27,8 +15,12 @@ class KhawiSignUp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://www.pngitem.com/pimgs/m/106-1068071_black-person-png-black-man-business-png-transparent.png"),
+                ),
                 Text(
                   'Welcome',
                   style: kMainTextStyle,
@@ -107,7 +99,6 @@ class KhawiSignUp extends StatelessWidget {
                 color: kColor,
               ),
               child: TextField(
-                controller: emailControler,
                 cursorColor: kMainColor,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
@@ -129,7 +120,6 @@ class KhawiSignUp extends StatelessWidget {
                 color: kColor,
               ),
               child: TextField(
-                controller: passwordControler,
                 cursorColor: kMainColor,
                 obscureText: true,
                 decoration: InputDecoration(
@@ -153,7 +143,6 @@ class KhawiSignUp extends StatelessWidget {
                 color: kColor,
               ),
               child: TextField(
-                controller: passwordControler2,
                 cursorColor: kMainColor,
                 obscureText: true,
                 decoration: InputDecoration(
@@ -168,7 +157,7 @@ class KhawiSignUp extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 50,
             ),
             Container(
@@ -178,32 +167,15 @@ class KhawiSignUp extends StatelessWidget {
                 color: kButtonsColor,
               ),
               child: GestureDetector(
-                child: const Icon(Icons.arrow_forward_rounded),
-                onTap: () async {
-
-  if(passwordControler.text == passwordControler2.text ){
-try {
-UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-    email: emailControler.text,
-    password: passwordControler.text
-  );
-    Navigator.push(
+                child: Text(
+                  "Save",
+                  style: TextStyle(fontSize: 20),
+                ),
+                onTap: () {
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const KhawiHomePage()));
-} on FirebaseAuthException catch (e) {
-  if (e.code == 'weak-password') {
-    print('The password provided is too weak.');
-  } else if (e.code == 'email-already-in-use') {
-    print('The account already exists for that email.');
-  }
-} catch (e) {
-  print(e);
-}
-
-
-  }
-
                 },
               ),
             ),
