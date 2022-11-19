@@ -54,5 +54,5 @@ class Database {
     return await touristRef.add(tourist);
   }
 
-  // static Future<DocumentReference<Tourist>> 
+  // static Future<DocumentReference<Tourist>>
 }
