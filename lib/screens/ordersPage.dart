@@ -112,12 +112,12 @@ class _OrdersState extends State<Orders> {
       body: SafeArea(
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Colors.white,
                 ),
@@ -135,7 +135,6 @@ class _OrdersState extends State<Orders> {
           ],
         ),
       ),
-      bottomNavigationBar: KhawiBottomNavigationBar(),
       backgroundColor: kMainColor,
     );
   }
