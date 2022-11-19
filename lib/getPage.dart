@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:khawi/screens/khawiMainPage.dart';
 import 'package:khawi/screens/khawiPackages.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
-import 'package:khawi/screens/packagePage.dart';
 import 'package:khawi/util/firebase_service.dart';
 
 class GetPage {
@@ -15,11 +14,10 @@ class GetPage {
   static Widget getHomePage() {
   
     log(GetPage.authChange.toString());
-    
     if (GetPage.authChange == null) {
       return KhawiSignIn();
     } else {
-      return packagePage();
+      return KhawiHomePage();
     }
   }
 }
