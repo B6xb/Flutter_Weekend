@@ -72,7 +72,7 @@ class _OffersPageState extends State<OffersPage> {
         name: "Bander",
         phoneNumber: "055554654",
         email: "aaa@gmail.com",
-        accountCreationTime: "12:334",
+        accountCreationTime: DateTime.parse("20221120"),
         nationality: "saudi",
         gender: "M")
       ..rate = 2.5;
