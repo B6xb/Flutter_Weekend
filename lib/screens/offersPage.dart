@@ -82,13 +82,20 @@ class _OffersPageState extends State<OffersPage> {
           description: "I will go with you to...",
           price: 50,
           khawi: khawi,
-          city: "dammam"),
+          city: "dammam",
+          startDateTime: DateTime.now(),
+          endDateTime: DateTime.now(),
+          creationDateTime: DateTime.now()
+          ),
       Offer(
           title: "mountains expert",
           description: "I will go with you to...",
           price: 50,
           khawi: khawi,
-          city: "apha"),
+          city: "apha",
+          startDateTime: DateTime.now(),
+          endDateTime: DateTime.now(),
+          creationDateTime: DateTime.now()),
     ];
 
     return Scaffold(
