@@ -28,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
     gender: "Male",
     balance: 100,
     birthDate: "12/1/1999",
-  );
+  )..bio = "I am traveller";
 
   final bioController = TextEditingController();
   final firstNController = TextEditingController();
@@ -77,9 +77,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 200,
                 child: TextField(
                   controller: bioController,
-                  onChanged: (ind) {
-                    bioController.text;
-                  },
                   cursorColor: kMainColor,
                   decoration: InputDecoration(
                       border:
@@ -88,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding: EdgeInsets.all(20.0),
                       ),
                       fillColor: kColor,
-                      hintText: 'write your Bio to let others know you'),
+                      hintText: tourist.bio),
                 ),
               ),
               const SizedBox(

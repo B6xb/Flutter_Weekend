@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:khawi/classes/khawi.dart';
@@ -54,5 +52,5 @@ class Database {
     return await touristRef.add(tourist);
   }
 
-  // static Future<DocumentReference<Tourist>> 
+  // static Future<DocumentReference<Tourist>>
 }

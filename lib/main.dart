@@ -9,6 +9,7 @@ import 'package:khawi/screens/offersPage.dart';
 import 'package:khawi/screens/ordersPage.dart';
 import 'package:khawi/screens/packagePage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:khawi/screens/profilePage.dart';
 import 'package:khawi/util/database.dart';
 import 'firebase_options.dart';
 import 'screens/khawiSignIn.dart';
@@ -18,7 +19,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Dosis'),
       title: 'Khawi',
-      home: GetPage.getHomePage(),
+      home: ProfilePage(),
     );
   }
 }
