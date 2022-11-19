@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:khawi/getPage.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
 import 'package:khawi/screens/khawiSignUp.dart';
 import 'package:khawi/screens/offersPage.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Dosis'),
       title: 'Khawi',
-      home:  Orders(),
+      home:  GetPage.getHomePage(),
     );
   }
 }
