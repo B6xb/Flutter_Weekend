@@ -11,6 +11,7 @@ class GetPage {
   static final authChange = auth.userChanges();
 
   static Widget getHomePage() {
+  
     log(GetPage.authChange.toString());
     if (GetPage.authChange == null) {
       return KhawiSignIn();
