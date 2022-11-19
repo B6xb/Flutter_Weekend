@@ -150,7 +150,7 @@ class KhawiSignIn extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const KhawiSignUp()));
+                                builder: (context) =>  KhawiSignUp()));
                       },
                       child: Text(
                         'Register',
