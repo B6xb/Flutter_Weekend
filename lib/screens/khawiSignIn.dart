@@ -56,15 +56,6 @@ class KhawiSignIn extends StatelessWidget {
                 obscureText: true,
                 decoration: InputDecoration(
                   focusColor: Colors.green,
-                  suffixIcon: GestureDetector(
-                    child: const Icon(Icons.arrow_forward_rounded),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const KhawiHomePage()));
-                    },
-                  ),
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
                   prefixIconColor: kButtonsColor,
                   prefixIcon: const Padding(
@@ -76,7 +67,26 @@ class KhawiSignIn extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 50,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: kButtonsColor,
+              ),
+              child: GestureDetector(
+                child: const Icon(Icons.arrow_forward_rounded),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const KhawiHomePage()));
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

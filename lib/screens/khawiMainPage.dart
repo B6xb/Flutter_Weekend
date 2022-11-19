@@ -26,14 +26,63 @@ class KhawiHomePageState extends State<KhawiHomePage> {
               style: kMainTextStyle,
             ),
           ),
-          const SizedBox(
+          const Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+            ),
+            margin: EdgeInsets.all(12),
             child: Image(
               image: AssetImage('images/alula.jpg'),
             ),
           ),
+          const Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+            ),
+            margin: EdgeInsets.all(12),
+            child: Image(
+              image: AssetImage('images/3.jpg'),
+            ),
+          ),
+          const Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+            ),
+            margin: EdgeInsets.all(12),
+            child: Image(
+              image: AssetImage('images/4.jpg'),
+            ),
+          ),
+          const Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+            ),
+            margin: EdgeInsets.all(12),
+            child: Image(
+              image: AssetImage('images/5.jpg'),
+            ),
+          ),
+          const Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+            ),
+            margin: EdgeInsets.all(12),
+            child: Image(
+              image: AssetImage('images/6.jpg'),
+            ),
+          ),
+          const Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+            ),
+            margin: EdgeInsets.all(12),
+            child: Image(
+              image: AssetImage('images/ashigr.jpg'),
+            ),
+          ),
         ],
       ),
-      bottomNavigationBar: KhawiBottomNavigationBar(),
+      bottomNavigationBar: const KhawiBottomNavigationBar(),
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(5.0),
         child: FloatingActionButton(
