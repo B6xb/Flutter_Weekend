@@ -25,6 +25,8 @@ class Tourist {
       required this.gender,
       required this.balance});
 
+  
+
   factory Tourist.fromFirestore(
     DocumentSnapshot<Map<String, dynamic>> snapshot,
     SnapshotOptions? options,
