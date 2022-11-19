@@ -27,7 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
     nationality: "saudi",
     gender: "Male",
     balance: 100,
-    birthDate: "12/1/1999",
+    birthDate: DateTime(),
   )..bio = "I am traveller";
 
   final bioController = TextEditingController();
