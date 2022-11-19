@@ -10,7 +10,7 @@ import '../util/database.dart';
 class packagePage extends ConsumerWidget {
   packagePage({Key? key}) : super(key: key);
 
-  Container packageBox(int days, double price, int numOfReservations) {
+  Container packageBox(int days, int price, int numOfReservations) {
     return Container(
       width: double.infinity,
       height: 100,
@@ -96,7 +96,6 @@ class packagePage extends ConsumerWidget {
           ],
         ),
       ),
-      bottomNavigationBar: KhawiBottomNavigationBar(),
       backgroundColor: kMainColor,
     );
   }

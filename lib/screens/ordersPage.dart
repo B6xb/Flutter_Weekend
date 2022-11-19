@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khawi/classes/khawi.dart';
-import 'package:khawi/classes/tourist.dart';
 import 'package:khawi/constants.dart';
-import 'package:khawi/components/khawiBottomNaBar.dart';
 import '../classes/offer.dart';
 
 class Orders extends StatefulWidget {
@@ -22,7 +20,7 @@ class _OrdersState extends State<Orders> {
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -31,34 +29,34 @@ class _OrdersState extends State<Orders> {
             child: Column(
               children: [
                 Text(
-                  "$title",
-                  style: TextStyle(color: Colors.black, fontSize: 30),
+                  title,
+                  style: const TextStyle(color: Colors.black, fontSize: 30),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  "$name",
-                  style: TextStyle(fontSize: 25, color: Colors.blueGrey),
+                  name,
+                  style: const TextStyle(fontSize: 25, color: Colors.blueGrey),
                 ),
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star,
                       color: Colors.yellow,
                       size: 30,
                     ),
                     Text(
                       "$rate",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                       ),
                     ),
                   ],
                 ),
                 Text(
-                  "$city",
-                  style: TextStyle(
+                  city,
+                  style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
@@ -68,8 +66,8 @@ class _OrdersState extends State<Orders> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              price == null ? "$price SR" : "",
-              style: TextStyle(color: Colors.green, fontSize: 30),
+              price == null ? "" : "$price SR",
+              style: const TextStyle(color: Colors.green, fontSize: 30),
             ),
           ),
         ],
@@ -80,13 +78,13 @@ class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
     Khawi khawi = Khawi(
-        name: "Bander",
-        phoneNumber: "055554654",
-        email: "aaa@gmail.com",
-        accountCreationTime: DateTime.now(),
-        nationality: "saudi",
-        gender: "M")
-      ..rate = 2.5;
+      name: "Bander",
+      phoneNumber: "055554654",
+      email: "aaa@gmail.com",
+      accountCreationTime: DateTime.now(),
+      nationality: "saudi",
+      gender: "M",
+    )..rate = 2.5;
     List<Offer> o = [
       Offer(
           title: "culture expert",
@@ -115,18 +113,11 @@ class _OrdersState extends State<Orders> {
             const SizedBox(
               height: 10,
             ),
-            Expanded(
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.white,
-                ),
-                child: Center(
-                  child: Text(
-                    "Current Order",
-                    style: TextStyle(fontSize: 30, color: kMainColor),
-                  ),
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                "Current Order",
+                style: kMainTextStyle,
               ),
             ),
             for (int i = 0; i < o.length; i++)

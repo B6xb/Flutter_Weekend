@@ -6,12 +6,14 @@ import 'package:khawi/screens/khawiMainPage.dart';
 import 'package:khawi/screens/khawiSignUp.dart';
 import 'package:khawi/util/firebase_service.dart';
 
+import '../components/khawiBottomNaBar.dart';
+
 class KhawiSignIn extends StatelessWidget {
   KhawiSignIn({super.key});
   FirebaseAuth auth = firebase_service.auth;
   FirebaseFirestore firestore = firebase_service.firestore;
   TextEditingController emailControler = new TextEditingController();
-    TextEditingController passwordControler = new TextEditingController();
+  TextEditingController passwordControler = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class KhawiSignIn extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             child: const Image(
-              image: AssetImage('images/ashigr.jpg'),
+              image: AssetImage('images/khawi.jpeg'),
               fit: BoxFit.fill,
             ),
           ),
@@ -94,41 +96,47 @@ class KhawiSignIn extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-            GestureDetector(
-              child: const Icon(Icons.arrow_forward_rounded),
-              onTap: () async {
-                try {
-                  UserCredential userCredential =
-                  await auth.signInWithEmailAndPassword(
-                      email: emailControler.text,
-                      password: passwordControler.text);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const KhawiHomePage()));
-                } on FirebaseAuthException catch (e) {
-                  if (e.code == 'user-not-found') {
-                    print('No user found for that email.');
-                  } else if (e.code == 'wrong-password') {
-                    print('Wrong password provided for that user.');
-                  }
-                }
-
-
-              },
-            ),
-                  // child: Container(
-                  //   padding: const EdgeInsets.symmetric(
-                  //       horizontal: 30, vertical: 10),
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(15),
-                  //     color: kButtonsColor,
-                  //   ),
-                  //   child: Icon(
-                  //     Icons.arrow_forward_rounded,
-                  //     color: kMainColor,
-                  //   ),
-                  // ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: kButtonsColor,
+                  ),
+                  child: GestureDetector(
+                    child: const Icon(Icons.arrow_forward_rounded),
+                    onTap: () async {
+                      try {
+                        UserCredential userCredential =
+                            await auth.signInWithEmailAndPassword(
+                                email: emailControler.text,
+                                password: passwordControler.text);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const KhawiBottomNavigationBar()));
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'user-not-found') {
+                          print('No user found for that email.');
+                        } else if (e.code == 'wrong-password') {
+                          print('Wrong password provided for that user.');
+                        }
+                      }
+                    },
+                  ),
+                ),
+                // child: Container(
+                //   padding: const EdgeInsets.symmetric(
+                //       horizontal: 30, vertical: 10),
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(15),
+                //     color: kButtonsColor,
+                //   ),
+                //   child: Icon(
+                //     Icons.arrow_forward_rounded,
+                //     color: kMainColor,
+                //   ),
+                // ),
 
                 const SizedBox(
                   height: 20,
@@ -150,7 +158,7 @@ class KhawiSignIn extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>  KhawiSignUp()));
+                                builder: (context) => KhawiSignUp()));
                       },
                       child: Text(
                         'Register',

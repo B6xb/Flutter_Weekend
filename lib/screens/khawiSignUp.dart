@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:khawi/classes/tourist.dart';
+import 'package:khawi/components/khawiBottomNaBar.dart';
 import 'package:khawi/constants.dart';
 import 'package:khawi/screens/khawiMainPage.dart';
 import 'package:khawi/screens/khawiSignIn.dart';
@@ -202,7 +203,8 @@ class KhawiSignUp extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const KhawiHomePage()));
+                              builder: (context) =>
+                                  const KhawiBottomNavigationBar()));
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
                         print('The password provided is too weak.');

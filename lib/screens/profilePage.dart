@@ -48,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundImage: NetworkImage(
                         "https://www.pngitem.com/pimgs/m/106-1068071_black-person-png-black-man-business-png-transparent.png"),
                   ),
@@ -219,15 +219,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   color: kButtonsColor,
                 ),
                 child: GestureDetector(
-                  child: Text(
+                  child: const Text(
                     "Save",
                     style: TextStyle(fontSize: 20),
                   ),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const KhawiHomePage()));
+                    Navigator.pop(context);
                   },
                 ),
               ),

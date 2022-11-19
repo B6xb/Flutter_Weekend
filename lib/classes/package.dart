@@ -4,7 +4,7 @@ class Package {
   String title;
   int numberOfDays;
   int numberOfReservations;
-  double price;
+  int price;
 
   Package(
       {required this.title,

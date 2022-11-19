@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:khawi/constants.dart';
-import 'package:khawi/components/khawiBottomNaBar.dart';
+import 'package:khawi/screens/profilePage.dart';
 
 class KhawiHomePage extends StatefulWidget {
   const KhawiHomePage({super.key});
@@ -108,7 +108,7 @@ class KhawiHomePageState extends State<KhawiHomePage> {
                       child: Row(
                         children: [
                           Text(
-                            '100 \$',
+                            '100 SAR',
                             style: kMainTextStyle.copyWith(
                               color: kButtonsColor,
                             ),
@@ -185,7 +185,11 @@ class KhawiHomePageState extends State<KhawiHomePage> {
         padding: const EdgeInsets.all(5.0),
         child: FloatingActionButton(
           backgroundColor: kButtonsColor,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => ProfilePage()),
+            );
+          },
           child: Icon(
             Icons.person,
             size: 40,

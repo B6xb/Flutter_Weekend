@@ -19,7 +19,7 @@ class KhawiBottomNavigationBar extends StatefulWidget {
 class KhawiBottomNavigationBarState extends State<KhawiBottomNavigationBar> {
   List<Widget> pages = [
     const KhawiHomePage(),
-    Orders(),
+    const Orders(),
     packagePage(),
     OffersPage(),
   ];
