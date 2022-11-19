@@ -144,7 +144,6 @@ class _OffersPageState extends State<OffersPage> {
           ],
         ),
       ),
-      bottomNavigationBar: KhawiBottomNavigationBar(),
       backgroundColor: kMainColor,
     );
   }
